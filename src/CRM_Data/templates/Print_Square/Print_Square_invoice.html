@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order_{{order.Customer}}</title>
+    <link rel="stylesheet" href="{% static 'en/css/invoice.css' %}">
+    <style>
+      @media print {
+          button {
+              display: none;  
+          }
+      }
+  </style>
+</head>
+<body>
+    <div id="invoiceholder">
+
+    <div div id="headerimage"> </div>
+      <div id="invoice" class="effect2">
+      
+        <div id="invoice-mid">
+          <div class="title">
+            <h4> Invoice <small><u>---0{{order.id}} </u></small></h4>
+            <h4>Date: <small><u>{{order.Created }}</u></small></h4>
+              <h4>Sales : {{order.Sales }}</h4> 
+              <h4>Designer : {{order.Designer }}</h4> 
+	      
+          </div><!--End Title-->
+          <div class="info">
+            <h4> Company :  <small>{{order.Customer}} </small></h4>
+            <h4>Client : <small>{{order.Customer.Client}}</small></h4>
+              <h4>Phone 1 : <small>{{order.Customer.Phone_1}}</small></h4> 
+              <h4>Phone 2 : <small>{{order.Customer.Phone_2}}</small></h4> 
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="info">
+            <h4>Address : </h4>
+		<h3>{{order.Customer.Address}}</h3>
+		<h4>Shipping Note : </h4>
+		<h3>{{order.Shipping}}</h3>
+
+          </div>
+
+
+        <div >
+          
+          <div id="table">
+            <table>
+              <tr class="tabletitle">
+                <td class="item"><h4 >Product Details</h4></td>
+                <td class="Hours"><h4 style="text-align: center;">Qty.</h4></td>
+                <td class="Rate"><h4 style="text-align: center;">Price</h4></td>
+              </tr>
+              {% for item in order.Print_Square_order_Detail.all %}
+              <tr class="service">
+                <td class="tableitem"><p class="itemtext" >{{item.Item_Name}}</p></td>
+                <td class="tableitem"><p class="itemtext" style="text-align: center;"> {{item.Quantity}}</p></td>
+                <td class="tableitem"><p class="itemtext" style="text-align: center;">EG {{item.Price}}</p></td>
+
+              </tr>
+              {% endfor %}
+            </table>
+            <table>
+              <tr class="tabletitle" >
+                <tr>
+                  <td style=" background-color:rgb(180, 206, 255);text-align: left;font-size: smaller;"  >Net Total</td>
+                  <td style=" background-color:rgb(212, 218, 229);text-align: left;font-size: smaller;" >Discount</td>
+                  <td style=" background-color:rgb(212, 218, 229);text-align: left;font-size: smaller;" >Design_Fee</td>
+                  <td style=" background-color:rgb(212, 218, 229);text-align: left;font-size: smaller;" >Delivery</td>
+                  <td style=" background-color:rgb(212, 218, 229);text-align: left;font-size: smaller;" >Transfer</td>
+                  <td style=" background-color:rgb(180, 206, 255);text-align: left;font-size: x-large;" >Total</td>
+    
+                </tr>
+                <tr>
+                  <td style="text-align: left;font-size: smaller;" >EG {{order.Order_Total}}</td>
+                  <td style="text-align: left;font-size: smaller;" >EG {{order.Discount}}</td>
+                  <td style="text-align: left;font-size: smaller;" >EG {{order.Design_Fees}}</td>
+                  <td style="text-align: left;font-size: smaller;" >EG {{order.Delivery}}</td>
+                  <td style="text-align: left;font-size: smaller;" >EG {{order.Transfer}}</td>
+                  <td style="text-align: left;font-size: x-large;" >EG {{order.Cost}}</td>
+    
+                </tr>
+              </tr>
+            </table>
+          </div><!--End Table-->
+          
+
+          
+          <div id="legalcopy">
+            <button type="button"  onclick="window.print()">PRINT>></button>
+          </div>
+          
+        </div><!--End InvoiceBot-->
+      </div><!--End Invoice-->
+    </div><!-- End Invoice Holder-->
+
+</body>
+</html>

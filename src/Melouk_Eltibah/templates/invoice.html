@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Invoice
+    </title>
+    <link rel="stylesheet" href="{% static 'en/css/invoice.css' %}">
+</head>
+<body>
+    <div id="invoiceholder">
+
+        <div id="headerimage"> </div>
+      <div id="invoice" class="effect2">
+        <div id="invoice-top">
+          {% comment %} <div class="logo" {% if order.branch == 'Etbaly_Shokran' %} style="background-image: url({% static 'en/img/etbaly.jpg' %})" {% elif order.branch == 'Melouk_Eltibah'  %} style="background-image: url({% static 'en/img/melouk.jpg' %})" {% elif order.branch == 'Print_Square' %} style="background-image: url({% static 'en/img/print.jpg' %})"  {% endif %} ></div> {% endcomment %}
+          <div class="info">
+            <h2><u>{{order.branch}}</u></h2>
+            <h5> <br> {% if order.branch == 'Etbaly_Shokran' %} <b> 01558861294 </b> {% elif order.branch == 'Melouk_Eltibah'  %}  <b>  01095014781 </b> {% elif order.branch == 'Print_Square' %}  <b>  01558261294 </b> {% endif %}    
+            </br>SALES :<strong>{{obj.seller}}</strong></br>
+            <b> Active_On : {{obj.active}} </b></br>
+            </h5>
+          </div><!--End Info-->
+          <div class="title">
+            <h2> Invoice <small><u>( {{order}} )</u></small>  </h2>
+            <h5>Order date: {{order.order_date|date:'D-d M Y' }}</br>
+                Delivery_Date : {{order.Due_date|date:'D-d M Y' }}</br>
+              Designer_By : {{obj.designer}}</br>
+	      
+            </h5>
+          </div><!--End Title-->
+
+
+        </div><!--End InvoiceTop-->
+      
+        <div id="invoice-mid">
+          <div class="info">
+            <h2>Company : {{order.customer.company}}  
+            </h2>
+            <h4>Client : <b>{{order.customer.client}}</h4></b>
+            <h4>Phone 1: <b>{{order.customer.phone_1}}&emsp; &emsp; Phone 2: {{order.customer.phone_2}}</br>
+              Address : <b>{{order.customer.location}}</br></h4></b>
+          </div>
+        </div><!--End Invoice Mid-->
+          
+        <div id="invoice-bot">
+          
+          <div id="table">
+            <table>
+              <tr class="tabletitle">
+                <td class="item"><h2>Item</h2></td>
+                <td class="Hours"><h2>Quantity</h2></td>
+                <td class="Rate"><h2>Price</h2></td>
+		            <td class="Rate"><h4>Status</h4></td>
+              </tr>
+              {% for item in order.order_Detail.all %}
+              <tr class="service">
+                <td class="tableitem"><p class="itemtext" >{{item.product}}</p></td>
+                <td class="tableitem"><p class="itemtext">{{item.quantity}}</p></td>
+                <td class="tableitem"><p class="itemtext">{{item.price}}</p></td>
+		            <td class="tableitem"><p class="Rate">{{item.note}}</p></td>
+              </tr>
+              {% endfor %}
+              <tr class="service">
+                <td class="itemtext"><h2>Discount</h2></td>
+                <td class="itemtext" colspan="3" style="text-align: center;"><h2>{{order.discount}}</h2></td>
+              </tr>
+              <tr class="service">
+                <td class="itemtext"><h2>Delivery</h2></td>
+                <td class="itemtext" colspan="3" style="text-align: center;"><h2>{{order.Delivery}}</h2></td>
+              </tr>
+              <tr class="tabletitle">
+                <td class="Rate"><h2>Total</h2></td>
+                <td class="payment" colspan="3" style="text-align: center;"><h2>{{order.net_total}}</h2></td>
+              </tr>
+              <tr class="service">
+                <td class="Rate"><h2>Transfer</h2></td>
+                <td class="payment" colspan="3" style="text-align: center;"><h2>{{order.transfer}}</h2></td>
+              </tr>
+              <tr class="service">
+                <td class="Rate"><h2>Cash</h2></td>
+                <td class="payment" colspan="3" style="text-align: center;"><h2>{{order.cash}}</h2></td>
+              </tr>
+              <tr class="tabletitle">
+                <td class="Rate"><h2>Client Debit</h2></td>
+                <td class="payment" colspan="3" style="text-align: center;"><h2>{{order.Customer_debt}}</h2></td>
+              </tr>
+            </table>
+          </div><!--End Table-->
+          
+
+          
+          <div id="legalcopy">
+            <p class="legal"><strong>Thank you for your business!</strong>  
+            </p>
+          </div>
+          
+        </div><!--End InvoiceBot-->
+      </div><!--End Invoice-->
+    </div><!-- End Invoice Holder-->
+
+</body>
+</html>

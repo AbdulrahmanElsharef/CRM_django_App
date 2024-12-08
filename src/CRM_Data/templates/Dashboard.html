@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printing CRM Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        /* Custom CSS styles for your dashboard */
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <h3 class="card-title">Dr.Print Dashboard</h3> -->
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="print-button btn btn-primary">
+                                {% if perms.Dr_Print.add_dr_print_order   %} 
+                                <a href="{% url 'Dr_Print_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Dr.Print Dashboard</h2></span></a>
+                                {% elif perms.Dr_Print.view_dr_print_order %}
+                                <a href="{% url 'Dr_Print_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Dr.Print Dashboard</h2></span></a>
+                                {% else %}
+                                <a href="" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Dr.Print Dashboard</h2></span></a>
+                                {% endif %}
+                              </button>
+                          </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <h3 class="card-title">Dr.Print Dashboard</h3> -->
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="print-button btn btn-primary">
+                                {% if perms.Etbaly_Shokran.add_etbaly_shokran_order %} 
+                                <a href="{% url 'Etbaly_Shokran_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Etbaly_Shokran Dashboard</h2></span></a>
+                                {% elif perms.Etbaly_Shokran.view_etbaly_shokran_order %}
+                                <a href="{% url 'Etbaly_Shokran_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Etbaly_Shokran Dashboard</h2></span></a>
+                                {% else %}
+                                <a href="" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Etbaly_Shokran Dashboard</h2></span></a>
+                                {% endif %}
+                              </button>
+                          </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <h3 class="card-title">Dr.Print Dashboard</h3> -->
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="print-button btn btn-primary">
+                                {% if perms.Melouk_Eltibah.add_melouk_eltibah_order   %} 
+                                <a href="{% url 'Melouk_Eltibah_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Melouk_Eltibah Dashboard</h2></span></a>
+                                {% elif perms.Melouk_Eltibah.view_melouk_eltibah_order  %}
+                                <a href="{% url 'Melouk_Eltibah_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Melouk_Eltibah Dashboard</h2></span></a>
+                                {% else %}
+                                <a href="" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Melouk_Eltibah Dashboard</h2></span></a>
+                                {% endif %}
+                              </button>
+                          </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <h3 class="card-title">Dr.Print Dashboard</h3> -->
+                        <div class="d-grid gap-2 col-12 mx-auto">
+                            <button class="print-button btn btn-primary">
+                                {% if perms.Print_Square.add_print_square_order or perms.Print_Square.change_print_square_order %} 
+                                <a href="{% url 'Print_Square_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Print_Square Dashboard</h2></span></a>
+                                {% elif perms.Print_Square.view_print_square_order  %}
+                                <a href="{% url 'Print_Square_order_list' %}" target="_blank" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Print_Square Dashboard</h2></span></a>
+                                {% else %}
+                                <a href="" style="color:aquamarine;"><span class="print-icon"><h2>🖨️</h2> </span><span><h2> Print_Square Dashboard</h2></span></a>
+                                {% endif %}
+                              </button>
+                          </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
